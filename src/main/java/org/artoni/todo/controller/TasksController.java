@@ -2,7 +2,6 @@ package org.artoni.todo.controller;
 
 import org.artoni.todo.model.Task;
 import org.artoni.todo.service.TasksService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,11 @@ import java.util.List;
 @Controller
 public class TasksController {
 
-    @Autowired
-    TasksService tasksService;
+    private final TasksService tasksService;
+
+    TasksController(TasksService tasksService) {
+        this.tasksService = tasksService;
+    }
 
     @GetMapping("/tasks")
     public String tasks(Principal principal, Model model) {
@@ -28,7 +30,7 @@ public class TasksController {
     }
 
     @GetMapping("/add-task")
-    public String addTaskGet() {
+    public static String addTaskGet() {
         return "add-task";
     }
 
