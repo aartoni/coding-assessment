@@ -8,7 +8,10 @@
 <body>
     <div class="task-header">
         <h1>Tasks list</h1>
-        <a href="/add-task">New task</a>
+        <div class="actions-div">
+            <a href="/add-task">New task</a>
+            <a href="/logout" style="margin-left: 1em">Logout</a>
+        </div>
     </div>
     <div th:if="${tasks.isEmpty()}">There are currently no tasks</div>
     <div class="task-div" th:each="task: ${tasks}">
@@ -16,8 +19,8 @@
             <h3 th:text="${task.title}"></h3>
             <div class="actions-div">
                 <a th:href="'/remove-task/' + ${task.id}">Remove</a>
-                <a th:if="${task.isChecked()}" th:href="'/invert-task/' + ${task.id}">Uncheck</a>
-                <a th:unless="${task.isChecked()}" th:href="'/invert-task/' + ${task.id}">Check</a>
+                <a th:if="${task.checked}" th:href="'/invert-task/' + ${task.id}">Uncheck</a>
+                <a th:unless="${task.checked}" th:href="'/invert-task/' + ${task.id}">Check</a>
             </div>
         </div>
         <h6 th:text="'Last updated: ' + ${#temporals.format(task.lastUpdate, 'dd-MM-yyyy HH:mm')}"></h6>
