@@ -34,7 +34,7 @@ public class TaskControllerTest {
 
     @Test
     public void shouldAddTask() throws Exception {
-        Task task = new Task("Test title", "Test text", false, null, LocalDateTime.now());
+        Task task = new Task("Test title", "Test text", null, LocalDateTime.now());
         this.mockMvc.perform(post("/add-task").with(user("first-user"))
                         .flashAttr("task", task)).andDo(print())
                 .andExpect(status().is3xxRedirection());
@@ -43,7 +43,7 @@ public class TaskControllerTest {
     @Test
     public void shouldRetrieveTasks() throws Exception {
         List<Task> tasks = new ArrayList<>(1);
-        tasks.add(new Task("Test title", "Test text", false, null, LocalDateTime.now()));
+        tasks.add(new Task("Test title", "Test text", null, LocalDateTime.now()));
         when(tasksService.getTasks("first-user")).thenReturn(tasks);
 
         this.mockMvc.perform(get("/tasks").with(user("first-user"))).andDo(print())

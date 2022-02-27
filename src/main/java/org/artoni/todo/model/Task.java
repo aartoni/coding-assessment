@@ -12,47 +12,62 @@ public class Task {
 
     private String title;
     private String text;
-    private Boolean checked;
+    private boolean checked;
     private LocalDateTime lastUpdate;
 
     @ManyToOne
     private User user;
 
+    /**
+     * Needed for JPA
+     */
     private Task() {}
 
-    public Task(String title, String text, Boolean checked, User user, LocalDateTime lastUpdate) {
+    public Task(String title, String text, User user, LocalDateTime lastUpdate) {
         this.title = title;
         this.text = text;
-        this.checked = checked;
         this.user = user;
         this.lastUpdate = lastUpdate;
+        checked = false;
     }
 
+    /**
+     * Used by Thymeleaf
+     * @return task identifier
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Used by Thymeleaf
+     * @return task title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Used by Thymeleaf
+     * @return task text/description
+     */
     public String getText() {
         return text;
     }
 
-    public Boolean isChecked() {
-        return checked;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
+    /**
+     * Used by Thymeleaf
+     * @return last update date and time
+     */
     public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setChecked(Boolean checked) {
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
         this.checked = checked;
     }
 

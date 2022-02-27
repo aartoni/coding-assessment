@@ -2,6 +2,7 @@ package org.artoni.todo.service;
 
 import org.artoni.todo.model.Task;
 import org.artoni.todo.model.User;
+import org.artoni.todo.repository.TasksRepository;
 import org.artoni.todo.repository.UsersRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,31 +13,33 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class TasksServiceTest {
+class TasksServiceTest {
 
     @Mock
     private UsersRepository usersRepository;
+
+    @Mock
+    private TasksRepository tasksRepository;
 
     @InjectMocks
     private TasksService tasksService;
 
     @Test
-    public void shouldAddAndRetrieveTasks() {
-        List<Task> tasks = new ArrayList<>();
-        Task task = new Task("Test title", "Test text", false, null, LocalDateTime.now());
+    void shouldAddAndRetrieveTasks() {
+        List<Task> tasks = new ArrayList<>(1);
+        Task task = new Task("Test title", "Test text", null, LocalDateTime.now());
         tasks.add(task);
         User user = new User("first-user", tasks);
-        when(usersRepository.findById(anyLong())).thenReturn(Optional.of(user));
+        when(usersRepository.findByUsername("first-user")).thenReturn(user);
+        when(tasksRepository.save(task)).thenReturn(task);
 
         tasksService.addTask(task, "first-user");
-        assertEquals(tasks, tasksService.getTasks("first-user"));
+        assertEquals(tasks, tasksService.getTasks("first-user"), "Should return the added task");
     }
 
 }
