@@ -1,0 +1,62 @@
+body {
+    border: 3px solid black;
+    color: #454545;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 40px auto;
+    max-width: 350px;
+    padding: 0 1em 1em;
+}
+
+.task-div {
+    border: 2px solid black;
+    padding: 0 1em;
+    margin-bottom: 1em;
+}
+
+.task-div:last-child {
+    margin-bottom: 0;
+}
+
+form {
+    display: grid;
+}
+
+input[type=submit] {
+    margin-top: 1em;
+}
+
+h1, h2 {
+    line-height: 1.2;
+}
+
+h3 {
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+h6 {
+    color: gray;
+    margin-top: 0;
+    margin-bottom: auto;
+}
+
+p {
+    hyphens: auto;
+    text-align: justify;
+}
+
+a {
+    margin-top: 1.6em;
+    font-size: 10pt;
+    color: gray;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions-div {
+    margin-top: 1em;
+}
