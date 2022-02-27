@@ -8,7 +8,7 @@ To-do list created for the Deloitte Ireland coding assessment. The app is built 
   >Classes should be immutable unless there's a very good reason to make them mutable
 * I used the MVC architectural pattern because it seemed the most appropriate;
 * I used Thymeleaf as I'm already familiar with its syntax;
-* I used Mockito in combination with JUnit 5 to mock the database, I chose not to implement integration tests to avoid wasting time. The project should have enough test coverage anyway.
+* I used Mockito in combination with JUnit 5 to mock the database, I chose not to implement integration tests to avoid wasting time. The project should have enough test coverage anyway (>80%).
 * I used in-memory authentication to avoid wasting time;
 * I have avoided using lombok as I find it hides some code smells;
 * I didn't waste too much time on the UI;
