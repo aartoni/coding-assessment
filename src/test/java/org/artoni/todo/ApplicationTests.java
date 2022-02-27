@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-class TodoApplicationTests {
+class ApplicationTests {
 
 	@Autowired
 	private TasksController tasksController;
