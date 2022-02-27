@@ -15,6 +15,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Task> tasks;
 
+    private User() {}
+
     public User(String username) {
         this.username = username;
     }
